@@ -13,17 +13,18 @@ before_install:
   - conda update -q conda
   # Useful for debugging any issues with conda
   - conda info -a
-  # freeze the supported pytorch version for consistency
-  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytorch=0.2.0 -c soumith
+  # Create a new conda test environment
+  - conda create -q -n test-environment python=$TRAVIS_PYTHON_VERSION pytorch=0.3.0 -c soumith
   - source activate test-environment
   # use requirements.txt for dependencies
   - pip install -r requirements.txt
   # dependencies for im2text
   - pip install Pillow
-  - conda install torchvision==0.1.8
+  - conda install torchvision
   # dependencies for speech2text
   - sudo apt-get install -y sox libsox-dev libsox-fmt-all
-  - pip install librosa git+https://github.com/pytorch/audio
+  - pip install librosa
+  - pip install git+https://github.com/pytorch/audio
 
 
 install:
